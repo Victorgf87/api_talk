@@ -22,5 +22,7 @@ module ApiTalkRails
     config.generators do |g|
       g.test_framework nil
     end
+
+    config.autoload_paths << config.root.join('lib')
   end
 end

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # Path: config/routes.rb
   Rails.application.routes.draw do
     namespace :api do
+
       namespace :v1 do
+        match '*unmatched', to: 'api#bad_url', via: [:get, :post]
         resources :users
       end
     end
