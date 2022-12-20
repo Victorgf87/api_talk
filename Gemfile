@@ -79,3 +79,5 @@ end
 gem "responders", "~> 3.0"
 
 gem "apipie-rails", "~> 0.8.2"
+
+gem "cancancan", "~> 3.4"
