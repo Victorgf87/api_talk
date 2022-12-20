@@ -10,7 +10,9 @@ module ExceptionHandler
   # class InvalidTokenError < StandardError; end
   # class UnconfirmedAccountError < StandardError; end
   # class DisapprovedAccountError < StandardError; end
-  #
+
+  class AuthenticationError < StandardError; end
+  class TokenAuthenticationError < StandardError; end
   included do
   #   rescue_from ActionController::ParameterMissing, with: :bad_request
   #
@@ -23,11 +25,14 @@ module ExceptionHandler
   #
   #   rescue_from ExceptionHandler::UnconfirmedAccountError, with: :forbidden
   #   rescue_from ExceptionHandler::DisapprovedAccountError, with: :forbidden
-  #   rescue_from CanCan::AccessDenied,                      with: :forbidden
+
   #
   rescue_from UrlNotFound, with: :not_found
   rescue_from ActionController::InvalidAuthenticityToken, with: :unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from CanCan::AccessDenied,                      with: :unprocessable_entity
+  rescue_from AuthenticationError, with: :unauthorized
+  rescue_from TokenAuthenticationError, with: :unauthorized
 
   #  rescue_from Geocoder::OverQueryLimitError, with: :too_many_requests
   end

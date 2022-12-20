@@ -1,7 +1,7 @@
 
 # Path: app/controllers/api/v1/users_controller.rb
 class Api::V1::UsersController < Api::V1::ApiController
-  skip_before_action :authenticate
+  load_and_authorize_resource
 
   def index
     render json: User.all

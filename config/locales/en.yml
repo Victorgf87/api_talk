@@ -32,3 +32,4 @@
 en:
   hello: "Hello world"
   url_not_found: "Url not found"
+  wrong_token: "Wrong token"

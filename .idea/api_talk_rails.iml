@@ -120,6 +120,7 @@
         <option value="apipie:views" />
         <option value="application_record" />
         <option value="benchmark" />
+        <option value="cancan:ability" />
         <option value="channel" />
         <option value="controller" />
         <option value="generator" />
@@ -162,6 +163,7 @@
         <option value="apipie:views" />
         <option value="application_record" />
         <option value="benchmark" />
+        <option value="cancan:ability" />
         <option value="channel" />
         <option value="controller" />
         <option value="generator" />
