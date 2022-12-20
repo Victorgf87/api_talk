@@ -34,6 +34,7 @@ module ExceptionHandler
   rescue_from AuthenticationError, with: :unauthorized
   rescue_from TokenAuthenticationError, with: :unauthorized
   rescue_from StandardError, with: :unexpected_error
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
   end
 
   private
