@@ -3,7 +3,8 @@ class Api::V1::PostsController < Api::V1::ApiController
   wrap_parameters include: [:title, :body]
 
   def index
-    render json: @posts
+    paginate(@posts)
+    render json: paginate(@posts)
   end
 
   private
