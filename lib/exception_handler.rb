@@ -25,7 +25,9 @@ module ExceptionHandler
   #   rescue_from ExceptionHandler::DisapprovedAccountError, with: :forbidden
   #   rescue_from CanCan::AccessDenied,                      with: :forbidden
   #
-     rescue_from UrlNotFound, with: :not_found
+  rescue_from UrlNotFound, with: :not_found
+  rescue_from ActionController::InvalidAuthenticityToken, with: :unprocessable_entity
+  # rescue_from AbstractController::ActionNotFound, with: :not_found
   #
   #   rescue_from Geocoder::OverQueryLimitError, with: :too_many_requests
   end

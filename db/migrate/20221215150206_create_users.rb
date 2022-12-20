@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :password_digest
       t.boolean :admin, default: false
-      t.string :token
+      t.string :auth_token
       t.timestamps
     end
   end

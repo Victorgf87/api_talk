@@ -8,8 +8,13 @@ Rails.application.routes.draw do
     namespace :api do
 
       namespace :v1 do
+        #resources :users
+        # match ':resource/:id', to: ':resource#jarl', via: :get
+
+        resources :sessions, only: [:create]
+        resources :users, only: [:create, :update, :show, :index]
+
         match '*unmatched', to: 'api#bad_url', via: [:get, :post]
-        resources :users
       end
     end
   end
