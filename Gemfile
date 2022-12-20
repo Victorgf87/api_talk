@@ -77,3 +77,5 @@ group :test do
 end
 
 gem "responders", "~> 3.0"
+
+gem "apipie-rails", "~> 0.8.2"
