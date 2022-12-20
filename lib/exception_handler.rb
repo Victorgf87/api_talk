@@ -25,19 +25,24 @@ module ExceptionHandler
   #
   #   rescue_from ExceptionHandler::UnconfirmedAccountError, with: :forbidden
   #   rescue_from ExceptionHandler::DisapprovedAccountError, with: :forbidden
+  #  rescue_from Geocoder::OverQueryLimitError, with: :too_many_requests
 
-  #
   rescue_from UrlNotFound, with: :not_found
   rescue_from ActionController::InvalidAuthenticityToken, with: :unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from CanCan::AccessDenied,                      with: :unprocessable_entity
   rescue_from AuthenticationError, with: :unauthorized
   rescue_from TokenAuthenticationError, with: :unauthorized
-
-  #  rescue_from Geocoder::OverQueryLimitError, with: :too_many_requests
+  rescue_from StandardError, with: :unexpected_error
   end
 
   private
+
+  def unexpected_error(error)
+    # TODO check for the talk
+    # Do something with the error like logging it
+    render json: json_api_error(error, 500), status: 500
+  end
 
   def json_api_error(exception, status_code)
     {
