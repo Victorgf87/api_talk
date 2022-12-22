@@ -3,8 +3,11 @@ class Api::V1::PostsController < Api::V1::ApiController
   #wrap_parameters include: [:title, :body]
 
   def index
-    @paginated_posts = paginate(@posts)
-    respond_with :api, :v1, @paginated_posts
+    pagination, @posts = paginate(@posts)
+
+    headers['pagination'] = pagination.to_json
+
+    respond_with :api, :v1, @posts
   end
 
   private
