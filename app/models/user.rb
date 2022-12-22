@@ -11,12 +11,11 @@ class User < ApplicationRecord
   end
 
   def self.auth_by_mail_and_pass(email, password)
-    User.find_by(email: email).tap do |user|
-      return nil unless user.present?
-      if(user.authenticate(password))
-        user.regenerate_auth_token
-        user
-      end
+    user = User.find_by(email: email)
+    return nil unless user.present?
+    if (user.authenticate(password))
+      user.regenerate_auth_token
+      user
     end
   end
 end

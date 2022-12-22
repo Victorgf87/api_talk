@@ -9,11 +9,6 @@ class Api::V1::SessionsController < Api::V1::ApiController
     else
       head :not_found
     end
-
-  end
-
-  def destroy
-
   end
 
   private
